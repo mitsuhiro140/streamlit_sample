@@ -26,7 +26,7 @@ def scrape_amazon_books():
 books_df = scrape_amazon_books()
 print(books_df.head())
 
-def save_to_postgresql(df, db_url="postgresql://mitsuhiro.ogawa:Misonikomi23@localhost:5432/amazon_books"):
+def save_to_postgresql(df, db_url="postgresql://myuser:mypassword@localhost:5432/amazon_books"):
     engine = create_engine(db_url)
     df['price'] = df['price'].str.replace('￥', '').str.replace(',', '').astype(float)
     df['rating'] = df['rating'].str.replace('5つ星のうち', '').astype(float)
